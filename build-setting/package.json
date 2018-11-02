@@ -1,0 +1,21 @@
+{
+  "name": "build-setting",
+  "version": "0.0.1",
+  "description": "The package template for getting started.",
+  "author": "liang zhi yong",
+  "main": "main.js",
+  "main-menu": {
+    "i18n:MAIN_MENU.project.title/i18n:build-setting.title": {
+      "accelerator": "CmdOrCtrl+b",
+      "message": "build-setting:open"
+    }
+  },
+  "panel": {
+    "main": "panel/index.js",
+    "type": "dockable",
+    "title": "build-setting",
+    "width": 400,
+    "height": 700,
+    "min-height": 700
+  }
+}

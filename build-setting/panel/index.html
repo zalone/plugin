@@ -1,0 +1,55 @@
+<div class="layout vertical" style="width: 100%;height: 100%">
+    <!--<ui-button id="btn">Send To Main</ui-button>-->
+    <div class="layout vertical start-justified">
+
+        <div class="self-end layout center horizontal">
+            <ui-button class="self-end red" v-on:confirm="onModified">修改CCImage</ui-button>
+        </div>
+        <ui-prop name="图片压缩选项">
+            <div class="layout horizontal center flex-1 ">
+                <ui-checkbox v-bind:checked="isCompress" v-on:change="onCompress"></ui-checkbox>
+            </div>
+        </ui-prop>
+
+        <ui-prop name="图片加密选项">
+            <div class="layout horizontal center flex-1 ">
+                <ui-checkbox v-bind:checked="isEncrypt" v-on:change="onEncrypt"></ui-checkbox>
+            </div>
+        </ui-prop>
+        <ui-prop name="encryptPrefix" tooltip="加密前缀" v-show="isEncrypt">
+            <div class="layout horizontal center flex-1 ">
+                <ui-input class="flex-1" v-value="encryptPrefix" v-on:blur="onSaveCfg"></ui-input>
+            </div>
+        </ui-prop>
+        <ui-prop name="encryptKey" tooltip="加密秘钥(1个长度)" v-show="isEncrypt">
+            <div class="layout horizontal center flex-1 ">
+                <ui-input class="flex-1" v-value="encryptKey" v-on:blur="onSaveCfg"></ui-input>
+            </div>
+        </ui-prop>
+
+        <ui-prop name="生成热更文件">
+            <div class="layout horizontal center flex-1 ">
+                <ui-checkbox v-bind:checked="isManifest" v-on:change="onManifest"></ui-checkbox>
+            </div>
+        </ui-prop>
+        <ui-prop name="version" tooltip="版本" v-show="isManifest">
+            <div class="layout horizontal center flex-1 ">
+                <ui-input class="flex-1" v-value="version" v-on:blur="onSaveCfg"></ui-input>
+            </div>
+        </ui-prop>
+        <ui-prop name="packageUrl" tooltip="服务器地址" v-show="isManifest">
+            <div class="layout horizontal center flex-1 ">
+                <ui-input class="flex-1" v-value="packageUrl" v-on:blur="onSaveCfg"></ui-input>
+            </div>
+        </ui-prop>
+        <ui-prop name="project.manifest" tooltip="assets下的manifest" v-show="isManifest"
+            style="height: 70px; display: flex;">
+            <ui-asset type="native-asset" v-on:change="onManifestUUID" v-value="manifestUUID" class="flex-1">
+            </ui-asset>
+        </ui-prop>
+
+        <h2>日志:</h2>
+        <textarea class="" id="logTextArea" v-value="logView" @contextmenu="onLogViewMenu"
+                  style="width: 100%; height: 420px; background: #252525;	color: #fd942b;	border-color: #fd942b;"></textarea>
+    </div>
+</div>
